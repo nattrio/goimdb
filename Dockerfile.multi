@@ -1,0 +1,27 @@
+# Build stage
+
+FROM golang:1.18-alpine AS builder
+
+WORKDIR /crud
+
+COPY . .
+
+RUN go mod download
+
+EXPOSE 2565
+
+RUN  go build -o /test main.go
+
+# Deploy stage
+
+FROM alpine:latest
+
+WORKDIR /
+
+COPY --from=builder /test /test
+
+EXPOSE 2565
+
+USER nonroot:nonroot
+
+ENTRYPOINT [ "/test" ]

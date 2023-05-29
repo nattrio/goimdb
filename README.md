@@ -10,13 +10,13 @@ GoIMDb API is a simple API for storing and retrieving movie data. The API is bui
 
 ## Installation
 
-1. Clone the repository:
+Clone the repository:
 
 ```bash
 git clone https://github.com/nattrio/GoIMDb.git
 ```
 
-2. Install dependencies:
+Install dependencies:
 
 ```bash
 go get github.com/labstack/echo/v4
@@ -26,13 +26,20 @@ go get github.com/erikstmartin/go-testdb
 
 ## Usage
 
-1. Start the server:
+Start the server:
 
 ```bash
 go run main.go
 ```
 
-2. Use the following endpoints:
+or using Docker
+
+```bash
+docker build -t go-multi -f Dockerfile.multi .
+docker run -d -p 2565:2565 --name go-multi go-multi
+```
+
+Use the following endpoints:
 
 ### `GET /movies`
 
